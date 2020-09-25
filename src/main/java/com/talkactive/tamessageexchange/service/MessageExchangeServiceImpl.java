@@ -21,7 +21,6 @@ public class MessageExchangeServiceImpl implements MessagesExchangeService {
 
     @Override
     public void sendMessage(MessageDTO messageDTO, String accessToken) {
-        log.info(accessToken);
         if (messageDTO.getMessageType().toString().equals(MessageType.NORMAL.toString())) {
             if (accessToken != null && !accessToken.isEmpty()) {
                 feignClient.saveMessage("Bearer " + accessToken, messageDTO);
